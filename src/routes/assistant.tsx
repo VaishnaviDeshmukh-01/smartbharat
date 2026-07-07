@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Sparkles, Send, Mic, Loader2 } from "lucide-react";
 import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/assistant")({
