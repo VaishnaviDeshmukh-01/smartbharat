@@ -1,12 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import heroAi from "@/assets/hero-ai.png";
 import {
   Sparkles, MessageSquare, FileText, AlertTriangle, Compass, GraduationCap,
-  Search, Globe, Bell, ChevronDown, ArrowRight, Mic, Send, MapPin, Upload,
+  ArrowRight, Mic, Send, MapPin, Upload,
   Shield, Zap, TrendingUp, Users, Clock, Languages, CheckCircle2,
   Landmark, CreditCard, IdCard, Car, Vote, ReceiptText, Baby, Building2,
-  Twitter, Github, Linkedin, Youtube, Star, Quote,
+  Star, Quote, ChevronDown,
 } from "lucide-react";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({ component: Index });
 
@@ -30,54 +33,6 @@ function Index() {
   );
 }
 
-/* ---------------- NAV ---------------- */
-function Nav() {
-  const links = ["Home", "Services", "AI Assistant", "Complaints", "Government Schemes", "Resources"];
-  return (
-    <header className="sticky top-0 z-50 w-full">
-      <div className="mx-auto max-w-[1440px] px-10 pt-5">
-        <nav className="glass flex items-center justify-between rounded-2xl px-5 py-3">
-          <div className="flex items-center gap-3">
-            <div className="grad-brand grid h-10 w-10 place-items-center rounded-xl shadow-glow">
-              <Sparkles className="h-5 w-5 text-white" />
-            </div>
-            <div className="leading-tight">
-              <div className="font-display text-lg font-bold text-navy">Smart Bharat</div>
-              <div className="text-[11px] font-medium text-muted-foreground">AI Civic Companion</div>
-            </div>
-          </div>
-          <ul className="hidden items-center gap-1 lg:flex">
-            {links.map((l, i) => (
-              <li key={l}>
-                <a
-                  href="#"
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                    i === 0 ? "bg-brand-soft text-primary" : "text-navy/70 hover:bg-brand-soft/60 hover:text-primary"
-                  }`}
-                >
-                  {l}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-2">
-            <button className="hidden items-center gap-1.5 rounded-full border border-border bg-white/60 px-3 py-2 text-sm font-medium text-navy/80 hover:bg-white md:inline-flex">
-              <Globe className="h-4 w-4" /> EN <ChevronDown className="h-3.5 w-3.5" />
-            </button>
-            <button className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white/60 text-navy/70 hover:text-primary">
-              <Bell className="h-4 w-4" />
-            </button>
-            <div className="grad-purple grid h-10 w-10 place-items-center rounded-full text-sm font-semibold text-white shadow-soft">
-              AR
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-/* ---------------- HERO ---------------- */
 function Hero() {
   return (
     <section className="relative grid grid-cols-12 gap-8 pt-16 pb-24">
