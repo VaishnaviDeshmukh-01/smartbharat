@@ -1,12 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import heroAi from "@/assets/hero-ai.png";
 import {
   Sparkles, MessageSquare, FileText, AlertTriangle, Compass, GraduationCap,
-  Search, Globe, Bell, ChevronDown, ArrowRight, Mic, Send, MapPin, Upload,
+  ArrowRight, Mic, Send, MapPin, Upload,
   Shield, Zap, TrendingUp, Users, Clock, Languages, CheckCircle2,
   Landmark, CreditCard, IdCard, Car, Vote, ReceiptText, Baby, Building2,
-  Twitter, Github, Linkedin, Youtube, Star, Quote,
+  Star, Quote, ChevronDown,
 } from "lucide-react";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({ component: Index });
 
@@ -30,58 +33,10 @@ function Index() {
   );
 }
 
-/* ---------------- NAV ---------------- */
-function Nav() {
-  const links = ["Home", "Services", "AI Assistant", "Complaints", "Government Schemes", "Resources"];
-  return (
-    <header className="sticky top-0 z-50 w-full">
-      <div className="mx-auto max-w-[1440px] px-10 pt-5">
-        <nav className="glass flex items-center justify-between rounded-2xl px-5 py-3">
-          <div className="flex items-center gap-3">
-            <div className="grad-brand grid h-10 w-10 place-items-center rounded-xl shadow-glow">
-              <Sparkles className="h-5 w-5 text-white" />
-            </div>
-            <div className="leading-tight">
-              <div className="font-display text-lg font-bold text-navy">Smart Bharat</div>
-              <div className="text-[11px] font-medium text-muted-foreground">AI Civic Companion</div>
-            </div>
-          </div>
-          <ul className="hidden items-center gap-1 lg:flex">
-            {links.map((l, i) => (
-              <li key={l}>
-                <a
-                  href="#"
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                    i === 0 ? "bg-brand-soft text-primary" : "text-navy/70 hover:bg-brand-soft/60 hover:text-primary"
-                  }`}
-                >
-                  {l}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-2">
-            <button className="hidden items-center gap-1.5 rounded-full border border-border bg-white/60 px-3 py-2 text-sm font-medium text-navy/80 hover:bg-white md:inline-flex">
-              <Globe className="h-4 w-4" /> EN <ChevronDown className="h-3.5 w-3.5" />
-            </button>
-            <button className="grid h-10 w-10 place-items-center rounded-full border border-border bg-white/60 text-navy/70 hover:text-primary">
-              <Bell className="h-4 w-4" />
-            </button>
-            <div className="grad-purple grid h-10 w-10 place-items-center rounded-full text-sm font-semibold text-white shadow-soft">
-              AR
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-/* ---------------- HERO ---------------- */
 function Hero() {
+  const { t } = useI18n();
   return (
     <section className="relative grid grid-cols-12 gap-8 pt-16 pb-24">
-      {/* gradient blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10 grad-hero-bg" />
       <div className="pointer-events-none absolute -left-24 top-20 -z-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-blob" />
       <div className="pointer-events-none absolute right-10 top-40 -z-10 h-96 w-96 rounded-full bg-purple/20 blur-3xl animate-blob" />
@@ -89,34 +44,32 @@ function Hero() {
       <div className="col-span-7 flex flex-col justify-center">
         <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-white/60 px-3 py-1.5 text-xs font-semibold text-primary shadow-soft backdrop-blur">
           <span className="grid h-5 w-5 place-items-center rounded-full grad-brand"><Sparkles className="h-3 w-3 text-white" /></span>
-          Powered by Bharat AI · Now with 25 languages
+          {t("hero.badge")}
         </div>
         <h1 className="mt-6 font-display text-[76px] font-bold leading-[1.02] tracking-tight text-navy">
           Smart <span className="bg-gradient-to-br from-primary via-purple to-orange bg-clip-text text-transparent">Bharat</span>
         </h1>
-        <p className="mt-3 text-2xl font-semibold text-navy/80">AI Powered Civic Companion</p>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          Helping every citizen access government services through AI — with multilingual support,
-          complaint tracking, document guidance and personalized scheme recommendations.
-        </p>
+        <p className="mt-3 text-2xl font-semibold text-navy/80">{t("hero.subtitle")}</p>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{t("hero.desc")}</p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <button className="group grad-brand inline-flex items-center gap-2 rounded-2xl px-6 py-4 text-sm font-semibold text-white shadow-glow transition hover:opacity-95">
-            <Sparkles className="h-4 w-4" /> Try AI Assistant
+          <Link to="/assistant" className="group grad-brand inline-flex items-center gap-2 rounded-2xl px-6 py-4 text-sm font-semibold text-white shadow-glow transition hover:opacity-95">
+            <Sparkles className="h-4 w-4" /> {t("hero.try")}
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-          </button>
-          <button className="inline-flex items-center gap-2 rounded-2xl border border-border bg-white/70 px-6 py-4 text-sm font-semibold text-navy shadow-soft backdrop-blur hover:bg-white">
-            Explore Services
-          </button>
+          </Link>
+          <Link to="/services" className="inline-flex items-center gap-2 rounded-2xl border border-border bg-white/70 px-6 py-4 text-sm font-semibold text-navy shadow-soft backdrop-blur hover:bg-white">
+            {t("hero.explore")}
+          </Link>
           <div className="ml-3 flex items-center gap-2 text-sm text-muted-foreground">
             <div className="flex -space-x-2">
               {["grad-brand","grad-orange","grad-green","grad-purple"].map((g,i)=>(
                 <div key={i} className={`${g} h-8 w-8 rounded-full border-2 border-white`} />
               ))}
             </div>
-            Trusted by 5M+ citizens
+            {t("hero.trusted")}
           </div>
         </div>
       </div>
+
 
       <div className="relative col-span-5">
         <div className="relative mx-auto aspect-square max-w-[520px]">
@@ -338,7 +291,7 @@ function PopularServices() {
       <SectionHead eyebrow="Popular Services" title="Start with what citizens use most" sub="Guided journeys — no more portal hopping." />
       <div className="grid grid-cols-4 gap-6">
         {s.map((it, i) => (
-          <div key={i} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
+          <Link to="/services" key={i} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
             <div className={`${it.g} grid h-12 w-12 place-items-center rounded-2xl shadow-soft`}>
               <it.i className="h-5 w-5 text-white" />
             </div>
@@ -349,7 +302,7 @@ function PopularServices() {
               </div>
               <ArrowRight className="h-4 w-4 text-navy/40 transition group-hover:translate-x-1 group-hover:text-primary" />
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
@@ -461,13 +414,13 @@ function Schemes() {
       <SectionHead eyebrow="Government Schemes" title="Discover schemes you qualify for" sub="AI matches central & state schemes to your profile." />
       <div className="grid grid-cols-5 gap-5">
         {s.map((it, i) => (
-          <div key={i} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
+          <Link to="/schemes" key={i} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
             <div className={`${it.g} grid h-12 w-12 place-items-center rounded-2xl shadow-soft`}><it.i className="h-5 w-5 text-white" /></div>
             <div className="mt-4 text-xs font-semibold text-primary">{it.tag}</div>
             <div className="mt-1 font-display text-lg font-semibold text-navy">{it.t}</div>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{it.d}</p>
-            <button className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">Check eligibility <ArrowRight className="h-3.5 w-3.5" /></button>
-          </div>
+            <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">Check eligibility <ArrowRight className="h-3.5 w-3.5" /></span>
+          </Link>
         ))}
       </div>
     </section>
@@ -532,53 +485,3 @@ function Testimonials() {
   );
 }
 
-/* ---------------- FOOTER ---------------- */
-function Footer() {
-  const cols = [
-    { h: "Government", l: ["India.gov.in", "MyGov", "Digital India", "Grievance Portal"] },
-    { h: "Services", l: ["Passport", "PAN Card", "Aadhaar", "GST"] },
-    { h: "Company", l: ["About", "Careers", "Press", "Contact"] },
-    { h: "Legal", l: ["Privacy", "Terms", "Support", "Accessibility"] },
-  ];
-  return (
-    <footer className="mt-20 bg-navy text-white">
-      <div className="mx-auto max-w-[1440px] px-10 py-20">
-        <div className="grid grid-cols-12 gap-10">
-          <div className="col-span-4">
-            <div className="flex items-center gap-3">
-              <div className="grad-brand grid h-11 w-11 place-items-center rounded-xl shadow-glow">
-                <Sparkles className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <div className="font-display text-lg font-bold">Smart Bharat</div>
-                <div className="text-xs text-white/60">AI Powered Civic Companion</div>
-              </div>
-            </div>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
-              A public-good AI platform for every Indian citizen. Multilingual. Private by default. Built for Bharat.
-            </p>
-            <div className="mt-6 flex gap-2">
-              {[Twitter, Linkedin, Youtube, Github].map((I, i) => (
-                <a key={i} href="#" className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80 hover:bg-white/10">
-                  <I className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-          </div>
-          {cols.map((c) => (
-            <div key={c.h} className="col-span-2">
-              <div className="font-display text-sm font-semibold text-white">{c.h}</div>
-              <ul className="mt-4 space-y-2 text-sm text-white/60">
-                {c.l.map((x) => (<li key={x}><a href="#" className="hover:text-white">{x}</a></li>))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="mt-16 flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/50">
-          <div>© 2026 Smart Bharat. A citizen-first initiative.</div>
-          <div className="flex items-center gap-2"><Shield className="h-3.5 w-3.5" /> Meity-compliant · ISO 27001 · Data stays in India</div>
-        </div>
-      </div>
-    </footer>
-  );
-}
