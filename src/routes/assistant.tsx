@@ -105,10 +105,10 @@ function AssistantPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Nav />
-      <main className="mx-auto max-w-[1200px] px-10 py-10">
-        <div className="mb-6 flex items-center justify-between">
+      <main className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col px-10 py-6">
+        <div className="mb-4 flex items-center justify-between">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-brand-soft px-3 py-1 text-xs font-semibold text-primary">
               <Sparkles className="h-3.5 w-3.5" /> AI Assistant
@@ -119,11 +119,11 @@ function AssistantPage() {
           <Link to="/" className="text-sm font-medium text-navy/70 hover:text-primary">← Home</Link>
         </div>
 
-        <div className="glass rounded-3xl p-2 shadow-glow">
-          <div className="rounded-[22px] bg-white">
-            <div ref={scrollRef} className="max-h-[60vh] min-h-[420px] space-y-4 overflow-y-auto px-6 py-6">
+        <div className="glass flex flex-1 flex-col overflow-hidden rounded-3xl p-2 shadow-glow">
+          <div className="flex flex-1 flex-col overflow-hidden rounded-[22px] bg-white">
+            <div ref={scrollRef} className="flex-1 min-h-0 space-y-4 overflow-y-auto px-6 py-6">
               {messages.length === 0 && (
-                <div className="flex flex-col items-center justify-center py-16 text-center">
+                <div className="flex flex-col items-center justify-center py-12 text-center">
                   <div className="grad-brand grid h-14 w-14 place-items-center rounded-2xl shadow-glow">
                     <Sparkles className="h-6 w-6 text-white" />
                   </div>
