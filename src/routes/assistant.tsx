@@ -106,7 +106,7 @@ function AssistantPage() {
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-background text-foreground">
       <Nav />
-      <main className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col px-10 py-6">
+      <main className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col px-10 py-6 min-h-0">
         <div className="mb-4 flex items-center justify-between">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-brand-soft px-3 py-1 text-xs font-semibold text-primary">
