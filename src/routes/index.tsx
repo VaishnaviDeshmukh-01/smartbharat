@@ -414,13 +414,13 @@ function Schemes() {
       <SectionHead eyebrow="Government Schemes" title="Discover schemes you qualify for" sub="AI matches central & state schemes to your profile." />
       <div className="grid grid-cols-5 gap-5">
         {s.map((it, i) => (
-          <div key={i} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
+          <Link to="/schemes" key={i} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
             <div className={`${it.g} grid h-12 w-12 place-items-center rounded-2xl shadow-soft`}><it.i className="h-5 w-5 text-white" /></div>
             <div className="mt-4 text-xs font-semibold text-primary">{it.tag}</div>
             <div className="mt-1 font-display text-lg font-semibold text-navy">{it.t}</div>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{it.d}</p>
-            <button className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">Check eligibility <ArrowRight className="h-3.5 w-3.5" /></button>
-          </div>
+            <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">Check eligibility <ArrowRight className="h-3.5 w-3.5" /></span>
+          </Link>
         ))}
       </div>
     </section>
