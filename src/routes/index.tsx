@@ -291,7 +291,7 @@ function PopularServices() {
       <SectionHead eyebrow="Popular Services" title="Start with what citizens use most" sub="Guided journeys — no more portal hopping." />
       <div className="grid grid-cols-4 gap-6">
         {s.map((it, i) => (
-          <div key={i} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
+          <Link to="/services" key={i} className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-glow">
             <div className={`${it.g} grid h-12 w-12 place-items-center rounded-2xl shadow-soft`}>
               <it.i className="h-5 w-5 text-white" />
             </div>
@@ -302,7 +302,7 @@ function PopularServices() {
               </div>
               <ArrowRight className="h-4 w-4 text-navy/40 transition group-hover:translate-x-1 group-hover:text-primary" />
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
