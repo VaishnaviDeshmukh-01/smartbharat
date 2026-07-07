@@ -118,7 +118,7 @@ function AssistantPage() {
           <Link to="/" className="text-sm font-medium text-navy/70 hover:text-primary">← Home</Link>
         </div>
 
-        <div className="glass flex flex-1 flex-col overflow-hidden rounded-3xl p-2 shadow-glow">
+        <div className="glass flex flex-1 flex-col overflow-hidden rounded-3xl p-2 shadow-glow min-h-0">
           <div className="flex flex-1 flex-col overflow-hidden rounded-[22px] bg-white">
             <div ref={scrollRef} className="flex-1 min-h-0 space-y-4 overflow-y-auto px-6 py-6">
               {messages.length === 0 && (
