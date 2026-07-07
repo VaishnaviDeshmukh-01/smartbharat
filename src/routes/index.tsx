@@ -34,9 +34,9 @@ function Index() {
 }
 
 function Hero() {
+  const { t } = useI18n();
   return (
     <section className="relative grid grid-cols-12 gap-8 pt-16 pb-24">
-      {/* gradient blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10 grad-hero-bg" />
       <div className="pointer-events-none absolute -left-24 top-20 -z-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-blob" />
       <div className="pointer-events-none absolute right-10 top-40 -z-10 h-96 w-96 rounded-full bg-purple/20 blur-3xl animate-blob" />
@@ -44,34 +44,32 @@ function Hero() {
       <div className="col-span-7 flex flex-col justify-center">
         <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-white/60 px-3 py-1.5 text-xs font-semibold text-primary shadow-soft backdrop-blur">
           <span className="grid h-5 w-5 place-items-center rounded-full grad-brand"><Sparkles className="h-3 w-3 text-white" /></span>
-          Powered by Bharat AI · Now with 25 languages
+          {t("hero.badge")}
         </div>
         <h1 className="mt-6 font-display text-[76px] font-bold leading-[1.02] tracking-tight text-navy">
           Smart <span className="bg-gradient-to-br from-primary via-purple to-orange bg-clip-text text-transparent">Bharat</span>
         </h1>
-        <p className="mt-3 text-2xl font-semibold text-navy/80">AI Powered Civic Companion</p>
-        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          Helping every citizen access government services through AI — with multilingual support,
-          complaint tracking, document guidance and personalized scheme recommendations.
-        </p>
+        <p className="mt-3 text-2xl font-semibold text-navy/80">{t("hero.subtitle")}</p>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{t("hero.desc")}</p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <button className="group grad-brand inline-flex items-center gap-2 rounded-2xl px-6 py-4 text-sm font-semibold text-white shadow-glow transition hover:opacity-95">
-            <Sparkles className="h-4 w-4" /> Try AI Assistant
+          <Link to="/assistant" className="group grad-brand inline-flex items-center gap-2 rounded-2xl px-6 py-4 text-sm font-semibold text-white shadow-glow transition hover:opacity-95">
+            <Sparkles className="h-4 w-4" /> {t("hero.try")}
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-          </button>
-          <button className="inline-flex items-center gap-2 rounded-2xl border border-border bg-white/70 px-6 py-4 text-sm font-semibold text-navy shadow-soft backdrop-blur hover:bg-white">
-            Explore Services
-          </button>
+          </Link>
+          <Link to="/services" className="inline-flex items-center gap-2 rounded-2xl border border-border bg-white/70 px-6 py-4 text-sm font-semibold text-navy shadow-soft backdrop-blur hover:bg-white">
+            {t("hero.explore")}
+          </Link>
           <div className="ml-3 flex items-center gap-2 text-sm text-muted-foreground">
             <div className="flex -space-x-2">
               {["grad-brand","grad-orange","grad-green","grad-purple"].map((g,i)=>(
                 <div key={i} className={`${g} h-8 w-8 rounded-full border-2 border-white`} />
               ))}
             </div>
-            Trusted by 5M+ citizens
+            {t("hero.trusted")}
           </div>
         </div>
       </div>
+
 
       <div className="relative col-span-5">
         <div className="relative mx-auto aspect-square max-w-[520px]">
