@@ -105,7 +105,7 @@ function AssistantPage() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
+    <div className="flex h-screen flex-col overflow-hidden bg-background text-foreground">
       <Nav />
       <main className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col px-10 py-6">
         <div className="mb-4 flex items-center justify-between">
@@ -187,7 +187,6 @@ function AssistantPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
